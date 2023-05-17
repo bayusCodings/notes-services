@@ -1,0 +1,12 @@
+{
+  "rootDir": ".",
+  "testRegex": "/src/tests/.*\\.(test|spec).(tsx|ts)$",
+  "modulePaths": ["<roorDir>"],
+  "moduleNameMapper": {
+    "^src/(.*)": "<roorDir>/src/$1"
+  },
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "testTimeout": 20000
+}

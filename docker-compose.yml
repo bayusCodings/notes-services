@@ -1,0 +1,33 @@
+version: "3.2"
+services:
+  api:
+    container_name: note_service
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3201:3201"
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+    networks:
+      - note-service-network
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+      - MONGO_INITDB_DATABASE=admin
+    networks:
+      - note-service-network
+networks:
+  note-service-network:
+    driver: bridge
