@@ -9,7 +9,7 @@ class MongoRepository<T> {
   }
 
   insert(data: T) {
-    logger.debug('MongoRepository.findById(%o)', data);
+    logger.debug('MongoRepository.insert(%o)', data);
     return this.model.create(data);
   }
 
